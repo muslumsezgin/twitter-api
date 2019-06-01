@@ -1,0 +1,26 @@
+sudo: false
+language: java
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script:
+  - mvn test
+  - mvn verify -Dit
+  - docker build -t $DOCKER_REPOSITORY .
+
+before_deploy:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
+
+deploy:
+  provider: script
+  script: docker push $DOCKER_REPOSITORY
+  on:
+    branch: master
