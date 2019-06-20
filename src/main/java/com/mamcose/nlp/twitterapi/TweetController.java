@@ -2,20 +2,12 @@ package com.mamcose.nlp.twitterapi;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.web.bind.annotation.*;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
